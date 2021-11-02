@@ -30,7 +30,7 @@ export class ContactFormComponent implements OnInit {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
       })
-    });
+    }).subscribe();
   }
 
 }
