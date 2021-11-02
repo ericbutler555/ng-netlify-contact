@@ -1,0 +1,40 @@
+<div class="contact-form-wrapper">
+
+  <h1 class="page-header">Contact me</h1>
+
+  <form
+    *ngIf="!formSubmitted"
+    name="contact-form"
+    method="post"
+    data-netlify="true"
+    [formGroup]="contactInfo"
+    (ngSubmit)="onSubmit()"
+  >
+    <input type="hidden" name="form-name" value="contact-form" /> <!-- netflify needs this -->
+
+    <div class="form-field">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" formControlName="name" />
+    </div>
+
+    <div class="form-field">
+      <label for="email">Your Email Address</label>
+      <input type="email" id="email" formControlName="email" />
+    </div>
+
+    <div class="form-field">
+      <label for="message">Your Message</label>
+      <textarea id="message" formControlName="message"></textarea>
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="contactInfo.invalid">Send</button>
+    </div>
+  </form>
+
+  <div *ngIf="formSubmitted">
+    <h2>Thanks!</h2>
+    <p>Your message has been submitted.</p>
+  </div>
+
+</div>

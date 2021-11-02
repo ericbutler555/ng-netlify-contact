@@ -1,0 +1,58 @@
+.contact-form-wrapper {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.form-field {
+  margin: 1em 0;
+
+  label {
+    display: inline-block;
+    margin: 0 0 0.25em;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  input,
+  select,
+  textarea {
+    display: inline-block;
+    width: 100%;
+    min-height: 2.5em;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    border: 1px solid #aaa;
+    font: inherit;
+  }
+
+  textarea {
+    min-height: 5em;
+    resize: vertical;
+  }
+}
+
+button[type="submit"] {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  border-radius: 0.25em;
+  border: 0;
+  background: green;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover,
+  &:focus {
+    background-color: lighten(green, 5%);
+  }
+
+  &[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
