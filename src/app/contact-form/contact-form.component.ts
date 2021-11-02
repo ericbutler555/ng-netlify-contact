@@ -26,13 +26,10 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.http.post('/', this.encode({"form-name": "contact-form", ...this.contactInfo.value}), {
+    this.http.post('/', this.encode(this.contactInfo.value), {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-      }),
-    }).subscribe(() => {
-      this.formSubmitted = true;
-      this.contactInfo.reset();
+      })
     });
   }
 
