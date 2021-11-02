@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,19 +11,25 @@ export class ContactFormComponent implements OnInit {
   contactInfo!: FormGroup;
   formSubmitted: boolean = false;
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.contactInfo = new FormGroup({
-      'name': new FormControl("Somebody", [Validators.required]),
-      'email': new FormControl("eric@whatever", [Validators.required, Validators.email]),
-      'message': new FormControl("Here is a message for ya!", [Validators.required])
+      name: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      message: new FormControl(null, [Validators.required])
     });
   }
 
   onSubmit() {
-    this.formSubmitted = true;
-    this.contactInfo.reset();
+    this.http.post('/', {...this.contactInfo.value}, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    }).subscribe(() => {
+      this.formSubmitted = true;
+      this.contactInfo.reset();
+    });
   }
 
 }

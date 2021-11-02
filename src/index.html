@@ -2,13 +2,19 @@
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
-  <title>Contact</title>
-  <base href="/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact</title>
+  <base href="/">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
   <app-root></app-root>
+  <!-- solely for netlify -->
+  <form name="contact-form" data-netlify="true" hidden>
+    <input name="name">
+    <input name="email">
+    <textarea name="message"></textarea>
+  </form>
 </body>
 </html>
