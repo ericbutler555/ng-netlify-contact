@@ -26,9 +26,9 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.http.post('/', this.encode({"form-data": "contact-form", ...this.contactInfo.value}), {
+    this.http.post('/', this.encode({"form-name": "contact-form", ...this.contactInfo.value}), {
       headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded'
       })
     }).subscribe(data => {
       this.formSubmitted = true;
