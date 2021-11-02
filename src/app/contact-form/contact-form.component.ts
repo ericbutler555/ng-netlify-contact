@@ -21,8 +21,12 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
+  encode(data: any) {
+    return Object.keys(data).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])).join("&");
+  }
+
   onSubmit() {
-    this.http.post('/', {...this.contactInfo.value}, {
+    this.http.post('/', this.encode({"form-name": "contact-form", ...this.contactInfo.value}), {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
       }),
